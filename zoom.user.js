@@ -19,6 +19,7 @@ var config = {
     "breakoutRoomsAutoJoinDelay": 5,
     "breakoutRoomsAutoLeaveEnabled": true,
     "breakoutRoomsAutoLeaveDelay": 8,
+    "theme": true,
     "showLogs": false
 };
 
@@ -30,7 +31,7 @@ var possibleSounds = {
     "Vine Boom": "//www.myinstants.com/media/sounds/vine-boom.mp3"
 };
 
-
+var background = "url('https://i.imgur.com/HllNVoe.png')";
 
 
 config.otherLeaveNoise = possibleSounds.Ding;
@@ -50,9 +51,13 @@ script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6
 script.addEventListener("load", function(e){initDatGUI();});
 document.head.appendChild(script);
 
+const backgroundStyle = document.createElement('style');
+backgroundStyle.textContent = "#wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:"+background+" !important;}";
+document.head.append(backgroundStyle);
+backgroundStyle.disable = !config.theme;
 
 const style = document.createElement('style');
-style.textContent = ".dg select{color:black;} #wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:url(https://i.imgur.com/HllNVoe.png) !important;}";
+style.textContent = ".dg select{color:black;}";
 document.head.append(style);
 
 
@@ -94,6 +99,7 @@ function initDatGUI() {
     breakoutRoomsAutoLeaveFolder.add(config, "breakoutRoomsLeaveNoise", 0, 60).options(possibleSounds).name("Noise");
     breakoutRoomsAutoLeaveFolder.open();
     breakoutRoomsFolder.open();
+    gui.add(config,"theme").name("Theme").onChange(function(newValue){backgroundStyle.disabled=!newValue;});
     gui.add(config,"showLogs").name("Show logs").onChange(function(newValue){logsContainer.style.visibility=newValue?"visible":"hidden";});
 }
 
