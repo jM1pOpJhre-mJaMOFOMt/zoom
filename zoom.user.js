@@ -31,10 +31,13 @@ var possibleSounds = {
     "Vine Boom": "//www.myinstants.com/media/sounds/vine-boom.mp3",
     "Android Notification": "//www.myinstants.com/media/sounds/android-notification-sound-effect-_earrape_-copia.mp3",
     "Steve": "//www.myinstants.com/media/sounds/classic_hurt.mp3",
-    "Tuturu": "//www.myinstants.com/media/sounds/tuturu_1.mp3"
+    "Tuturu": "//www.myinstants.com/media/sounds/tuturu_1.mp3",
+    "Re:Zero Whoa": "//www.myinstants.com/media/sounds/ahhyooaaawhoaaa.mp3",
+    "Among Us Drip": "https://www.myinstants.com/media/sounds/among-us-drip-audiotrimmer.mp3",
+    "Wolves - Kanye": "https://www.myinstants.com/media/sounds/wolves_-_kanye-6b019add-71f7-4a31-8363-ed112937445e.mp3"
 };
 
-var background = "url('https://i.imgur.com/IOTDnFu.png')";
+var background = "url('https://i.imgur.com/ZBsHO4i.gif')";
 
 
 config.otherLeaveNoise = possibleSounds["Ding"];
