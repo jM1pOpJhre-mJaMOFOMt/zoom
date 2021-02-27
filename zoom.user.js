@@ -258,7 +258,7 @@ function checkParticipants() {
 
 
 
-    if(config.autoLeaveEnabled && participants <= config.leaveAtXPeople && !(config.autoLeaveDisableInBreakoutRooms && inBreakoutRoom)) {
+    if(config.autoLeaveEnabled && participants <= config.autoLeaveAtXPeople && !(config.autoLeaveDisableInBreakoutRooms && inBreakoutRoom)) {
         leaveMeetingASAP = true;
     }
 
