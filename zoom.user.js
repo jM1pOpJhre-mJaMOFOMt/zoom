@@ -10,6 +10,8 @@
 // @downloadURL  https://github.com/jM1pOpJhre-mJaMOFOMt/zoom/raw/main/zoom.user.js
 // ==/UserScript==
 
+"use strict";
+
 var config = {
     "autoLeaveAtXPeople": 10,
     "autoLeaveEnabled": false,
@@ -34,20 +36,19 @@ var possibleSounds = {
     "Tuturu": "//www.myinstants.com/media/sounds/tuturu_1.mp3",
     "Re:Zero Whoa": "//www.myinstants.com/media/sounds/ahhyooaaawhoaaa.mp3",
     "Among Us Drip": "https://www.myinstants.com/media/sounds/among-us-drip-audiotrimmer.mp3",
-    "Wolves - Kanye": "https://www.myinstants.com/media/sounds/wolves_-_kanye-6b019add-71f7-4a31-8363-ed112937445e.mp3"
+    "Wolves - Kanye": "https://www.myinstants.com/media/sounds/wolves_-_kanye-6b019add-71f7-4a31-8363-ed112937445e.mp3",
+    "Bruh": "//www.myinstants.com/media/sounds/movie_1.mp3"
 };
 
 var background = "url('https://i.imgur.com/ZBsHO4i.gif')";
 
-
+config.otherJoinNoise = possibleSounds["None"];
 config.otherLeaveNoise = possibleSounds["Ding"];
 config.breakoutRoomsJoinNoise = possibleSounds["None"];
 config.breakoutRoomsLeaveNoise = possibleSounds["None"];
 
 
 
-
-"use strict";
 
 var script = document.createElement("script");
 script.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js");
@@ -84,6 +85,7 @@ function updateOnOffButton(button, on) {
 
 function initDatGUI() {
     gui = new dat.GUI();
+    gui.add(config, "otherJoinNoise").options(possibleSounds).name("Noise on join");
     gui.add(config, "otherLeaveNoise").options(possibleSounds).name("Noise on leave");
     autoLeaveFolder = gui.addFolder("Autoleave Meeting");
     autoLeaveFolder.add(config, "autoLeaveAtXPeople", 1, 100).name("Min People");
@@ -268,6 +270,7 @@ function checkParticipants() {
 
     if (participantsOnLastCheck < participants) {
         scriptLogParticipantsUp(participantsOnLastCheck, participants);
+        playNoise(config.otherJoinNoise);
     } else if (participantsOnLastCheck > participants) {
         scriptLogParticipantsDown(participantsOnLastCheck, participants);
         playNoise(config.otherLeaveNoise);
