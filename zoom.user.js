@@ -28,7 +28,10 @@ var possibleSounds = {
     "Ding": "//www.myinstants.com/media/sounds/ding-sound-effect_2.mp3",
     "Taco Bell": "//www.myinstants.com/media/sounds/taco-bell-bong-sfx.mp3",
     "Buzzer": "//www.myinstants.com/media/sounds/wrong-answer-sound-effect.mp3",
-    "Vine Boom": "//www.myinstants.com/media/sounds/vine-boom.mp3"
+    "Vine Boom": "//www.myinstants.com/media/sounds/vine-boom.mp3",
+    "Android Notification": "//www.myinstants.com/media/sounds/android-notification-sound-effect-_earrape_-copia.mp3",
+    "Steve": "//www.myinstants.com/media/sounds/classic_hurt.mp3",
+    "Tuturu": "//www.myinstants.com/media/sounds/tuturu_1.mp3"
 };
 
 var background = "url('https://i.imgur.com/IOTDnFu.png')";
