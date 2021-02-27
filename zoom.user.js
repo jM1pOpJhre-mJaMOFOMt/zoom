@@ -184,7 +184,7 @@ function setBreakoutRoomStatus(inRoom) {
     if (inRoom == inBreakoutRoom && document.querySelector("#breakoutRoomIndicator").innerText != "" && breakoutRoomsStarting == prevBreakoutRoomsStarting) return;
     if (inRoom) {
         breakoutRoomsStarting = false;
-        playNoise(config.breakoutRoomsJoinNoise);
+        if(inRoom != inBreakoutRoom) playNoise(config.breakoutRoomsJoinNoise);
         lastBreakoutRoomJoin = lastBreakoutRoomChange = Date.now();
         breakoutRoomIndicator.innerText = "[" + new Date().toLocaleTimeString() + "] Breakout Room Status: IN A ROOM";
         breakoutRoomIndicator.style.color = "orange";
