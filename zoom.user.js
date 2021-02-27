@@ -34,9 +34,9 @@ var possibleSounds = {
 var background = "url('https://i.imgur.com/HllNVoe.png')";
 
 
-config.otherLeaveNoise = possibleSounds.Ding;
-config.breakoutRoomsJoinNoise = possibleSounds.None;
-config.breakoutRoomsLeaveNoise = possibleSounds.None;
+config.otherLeaveNoise = possibleSounds["Ding"];
+config.breakoutRoomsJoinNoise = possibleSounds["None"];
+config.breakoutRoomsLeaveNoise = possibleSounds["None"];
 
 
 
@@ -52,7 +52,7 @@ script.addEventListener("load", function(e){initDatGUI();});
 document.head.appendChild(script);
 
 const backgroundStyle = document.createElement('style');
-backgroundStyle.textContent = "#wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:"+background+" !important;}";
+backgroundStyle.textContent = "#wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:"+background+" !important;background-size:cover !important;}";
 document.head.append(backgroundStyle);
 backgroundStyle.disable = !config.theme;
 
