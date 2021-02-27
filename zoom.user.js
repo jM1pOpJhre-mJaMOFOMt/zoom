@@ -52,7 +52,7 @@ document.head.appendChild(script);
 
 
 const style = document.createElement('style');
-style.textContent = ".dg select{color:black;} #wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:/*url(https://i.imgur.com/HllNVoe.png)*/#83604F !important;}";
+style.textContent = ".dg select{color:black;} #wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:url(https://i.imgur.com/HllNVoe.png) !important;}";
 document.head.append(style);
 
 
