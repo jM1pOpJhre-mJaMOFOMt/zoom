@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Zoom
-// @version      1.0
+// @version      0.1
 // @description  Zoom script
 // @author       You
 // @match        https://zoom.us/wc/*
 // @match        https://*.zoom.us/wc/*
 // @grant        none
 // @run-at       document-start
-// @downloadURL
+// @downloadURL  https://github.com/jM1pOpJhre-mJaMOFOMt/zoom/raw/main/zoom.user.js
 // ==/UserScript==
 
 var config = {
