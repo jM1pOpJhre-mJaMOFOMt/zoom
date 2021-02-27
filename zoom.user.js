@@ -31,7 +31,7 @@ var possibleSounds = {
     "Vine Boom": "//www.myinstants.com/media/sounds/vine-boom.mp3"
 };
 
-var background = "url('https://i.imgur.com/HllNVoe.png')";
+var background = "url('https://i.imgur.com/IOTDnFu.png')";
 
 
 config.otherLeaveNoise = possibleSounds["Ding"];
@@ -52,7 +52,7 @@ script.addEventListener("load", function(e){initDatGUI();});
 document.head.appendChild(script);
 
 const backgroundStyle = document.createElement('style');
-backgroundStyle.textContent = "#wc-footer,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:"+background+" !important;background-size:cover !important;}";
+backgroundStyle.textContent = "#wc-footer,.gallery-video-container__video-frame,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:"+background+" !important;background-size:cover !important;}";
 document.head.append(backgroundStyle);
 backgroundStyle.disable = !config.theme;
 
@@ -71,6 +71,7 @@ var breakoutRoomsAutoLeaveFolder;
 var breakoutRoomsAutoLeaveEnabledButton;
 var inBreakoutRoom = false;
 var breakoutRoomsStarting = false;
+var prevBreakoutRoomsStarting = breakoutRoomsStarting;
 
 function updateOnOffButton(button, on) {
     button.name(on?"Enabled":"Disabled");
@@ -163,7 +164,8 @@ function createAlertUI(){
 }
 
 function setBreakoutRoomStatus(inRoom) {
-    if(inRoom == inBreakoutRoom && document.querySelector("#breakoutRoomIndicator").innerText!="") return;
+    if(inRoom == inBreakoutRoom && document.querySelector("#breakoutRoomIndicator").innerText != "" && breakoutRoomsStarting == prevBreakoutRoomsStarting) return;
+    console.log("a",breakoutRoomsStarting,prevBreakoutRoomsStarting);
     if(inRoom) {
         breakoutRoomsStarting = false;
         playNoise(config.breakoutRoomsJoinNoise);
@@ -181,6 +183,7 @@ function setBreakoutRoomStatus(inRoom) {
         scriptLog("Breakout Room Status: NOT IN A ROOM"+(breakoutRoomsStarting?" (Breakout Rooms Starting)":""));
     }
     inBreakoutRoom = inRoom;
+    prevBreakoutRoomsStarting = breakoutRoomsStarting;
 }
 
 function scriptLogMain(alertMessage) {
@@ -301,8 +304,10 @@ function joinOrLeaveBreakout() {
         if(titles[i].innerText=="Breakout Rooms") {
             var button = titles[i].parentElement.parentElement.querySelector("button.zm-btn.zm-btn-legacy.zm-btn--primary.zm-btn__outline--blue") || titles[i].parentElement.parentElement.querySelector("button.zmu-btn.zm-btn-legacy.zmu-btn--primary.zmu-btn__outline--blue");
             if(button.innerText=="Join") {
-                breakoutRoomsStarting = true;
-                //setBreakoutRoomStatus(true);
+                if(!breakoutRoomsStarting) {
+                    breakoutRoomsStarting = true;
+                    setBreakoutRoomStatus(false);
+                }
                 setTimeout(function(){/*setBreakoutRoomStatus(true);*/ button.click(); },config.breakoutRoomsAutoJoinDelay*1000);
             }
             else {
