@@ -2,7 +2,7 @@
 // @name         Zoom
 // @version      1.0
 // @description  Zoom script
-// @author       You
+// @author       nur
 // @match        https://zoom.us/wc/*
 // @match        https://*.zoom.us/wc/*
 // @grant        none
@@ -59,12 +59,12 @@ document.head.appendChild(script);
 
 const backgroundStyle = document.createElement('style');
 backgroundStyle.textContent = "#wc-footer,.gallery-video-container__video-frame,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:" + background + " !important;background-size:cover !important;}";
-document.head.append(backgroundStyle);
+document.head.appendChild(backgroundStyle);
 backgroundStyle.disable = !config.theme;
 
 const style = document.createElement('style');
 style.textContent = ".dg select{color:black;}";
-document.head.append(style);
+document.head.appendChild(style);
 
 
 var gui;
@@ -88,7 +88,7 @@ function initDatGUI() {
     gui.add(config, "otherJoinNoise").options(possibleSounds).name("Noise on join");
     gui.add(config, "otherLeaveNoise").options(possibleSounds).name("Noise on leave");
     autoLeaveFolder = gui.addFolder("Autoleave Meeting");
-    autoLeaveFolder.add(config, "autoLeaveAtXPeople", 1, 100).name("Min People");
+    autoLeaveFolder.add(config, "autoLeaveAtXPeople", 1, 100, 1).name("Min People");
     autoLeaveEnabledButton = autoLeaveFolder.add(config, "autoLeaveEnabled").onChange(function(newValue) {
         updateOnOffButton(autoLeaveEnabledButton, newValue);
     });
@@ -103,7 +103,7 @@ function initDatGUI() {
     });
     updateOnOffButton(breakoutRoomsAutoJoinEnabledButton, config.breakoutRoomsAutoJoinEnabled);
     breakoutRoomsAutoJoinFolder.add(config, "breakoutRoomsAutoJoinDelay", 0, 60).name("Delay");
-    breakoutRoomsAutoJoinFolder.add(config, "breakoutRoomsJoinNoise", 0, 60).options(possibleSounds).name("Noise");
+    breakoutRoomsAutoJoinFolder.add(config, "breakoutRoomsJoinNoise").options(possibleSounds).name("Noise");
     breakoutRoomsAutoJoinFolder.open();
     breakoutRoomsAutoLeaveFolder = breakoutRoomsFolder.addFolder("Autoleave Breakout Rooms");
     breakoutRoomsAutoLeaveEnabledButton = breakoutRoomsAutoLeaveFolder.add(config, "breakoutRoomsAutoLeaveEnabled").onChange(function(newValue) {
@@ -111,7 +111,7 @@ function initDatGUI() {
     });
     updateOnOffButton(breakoutRoomsAutoLeaveEnabledButton, config.breakoutRoomsAutoLeaveEnabled);
     breakoutRoomsAutoLeaveFolder.add(config, "breakoutRoomsAutoLeaveDelay", 0, 60).name("Delay");
-    breakoutRoomsAutoLeaveFolder.add(config, "breakoutRoomsLeaveNoise", 0, 60).options(possibleSounds).name("Noise");
+    breakoutRoomsAutoLeaveFolder.add(config, "breakoutRoomsLeaveNoise").options(possibleSounds).name("Noise");
     breakoutRoomsAutoLeaveFolder.open();
     breakoutRoomsFolder.open();
     gui.add(config, "theme").name("Theme").onChange(function(newValue) {
