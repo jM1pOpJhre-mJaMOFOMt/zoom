@@ -60,7 +60,8 @@ document.head.appendChild(script);
 const backgroundStyle = document.createElement('style');
 backgroundStyle.textContent = "#wc-footer,.gallery-video-container__video-frame,.speaker-bar-container__video-frame,.join-dialog,.speaker-active-container__video-frame,.speaker-view,.speaker-bar-container__horizontal-view-wrap,.gallery-video-container__main-view,.gallery-video-container__wrap,.main-layout{background:transparent !important;} body{background:" + background + " !important;background-size:cover !important;}";
 document.head.appendChild(backgroundStyle);
-backgroundStyle.disable = !config.theme;
+backgroundStyle.disabled = !config.theme;
+
 
 const style = document.createElement('style');
 style.textContent = ".dg select{color:black;}";
