@@ -2,7 +2,7 @@
 // @name         Zoom
 // @version      1.0
 // @description  Zoom script
-// @author       nur
+// @author       You
 // @match        https://zoom.us/wc/*
 // @match        https://*.zoom.us/wc/*
 // @grant        none
@@ -16,12 +16,12 @@ var config = {
     "autoLeaveAtXPeople": 10,
     "autoLeaveEnabled": false,
     "autoLeaveDisableInBreakoutRooms": true,
-    "autoLeaveDelayAfterBreakoutClose": 20,
+    "autoLeaveDelayAfterBreakoutClose": 70,
     "breakoutRoomsAutoJoinEnabled": true,
     "breakoutRoomsAutoJoinDelay": 5,
     "breakoutRoomsAutoLeaveEnabled": true,
     "breakoutRoomsAutoLeaveDelay": 8,
-    "theme": true,
+    "theme": false,
     "showLogs": false
 };
 
