@@ -123,10 +123,10 @@ function initDatGUI() {
     breakoutRoomsAutoLeaveFolder.addInput(config, "breakoutRoomsAutoLeaveDelay", {label:"Delay",min:0,max:60});
     breakoutRoomsAutoLeaveFolder.addInput(config, "breakoutRoomsLeaveNoise", {options:possibleSounds,label:"Noise"});
     gui.addInput(config, "theme", {label:"Theme"}).on('change', function(newValue) {
-        backgroundStyle.disabled = !newValue;
+        backgroundStyle.disabled = !newValue.value;
     });
     gui.addInput(config, "showLogs", {label: "Show logs"}).on('change', function(newValue) {
-        logsContainer.style.visibility = newValue ? "visible" : "hidden";
+        logsContainer.style.visibility = newValue.value ? "visible" : "hidden";
     });
 
     importGUI.addInput({a:presets['']},"a",{label:"Import Preset",options:presets}).on('change', function(e){pane.importPreset(JSON.parse(e.value));});
