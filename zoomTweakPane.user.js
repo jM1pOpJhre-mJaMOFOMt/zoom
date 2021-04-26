@@ -103,6 +103,7 @@ var prevBreakoutRoomsStarting = breakoutRoomsStarting;
 
 function initDatGUI() {
     pane = new Tweakpane();
+    pane.addButton({title:"Toggle"}).on('click',function(e){guiTabs.hidden=!guiTabs.hidden;})
     guiTabs = pane.addTab({pages:[{title: 'Config'},{title: 'Import/Export'}]});
     gui = guiTabs.pages[0];
     importGUI = guiTabs.pages[1];
