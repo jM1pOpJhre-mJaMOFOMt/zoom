@@ -83,7 +83,7 @@ backgroundStyle.disabled = !config.theme;
 
 
 const style = document.createElement('style');
-style.textContent = ".dg select{color:black;}.tp-dfwv{min-width:360px;}";
+style.textContent = ".dg select{color:black;}.tp-dfwv{min-width:315px;}";
 document.head.appendChild(style);
 
 var pane;
