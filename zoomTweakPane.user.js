@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Zoom - Tweakpane
-// @version      1.0
+// @version      1.1
 // @description  Zoom script
 // @author       You
 // @match        https://zoom.us/wc/*
 // @match        https://*.zoom.us/wc/*
+// @icon         https://www.google.com/s2/favicons?domain=zoom.us
 // @grant        none
 // @downloadURL  https://github.com/jM1pOpJhre-mJaMOFOMt/zoom/raw/main/zoomTweakPane.user.js
 // ==/UserScript==
@@ -83,7 +84,7 @@ backgroundStyle.disabled = !config.theme;
 
 
 const style = document.createElement('style');
-style.textContent = ".dg select{color:black;}.tp-dfwv{min-width:315px;}";
+style.textContent = ".dg select{color:black;}.tp-dfwv{min-width:360px;}";
 document.head.appendChild(style);
 
 var pane;
@@ -332,7 +333,7 @@ function joinOrLeaveBreakout() {
     }
     var titles = document.querySelectorAll("div.zm-modal-body > div.zm-modal-body-title");
     for (var i = 0; i < titles.length; i++) {
-        if (titles[i].innerText == "Breakout Rooms") {
+        if (titles[i].innerText == "Breakout Rooms" || titles[i].innerText.includes(" is inviting you to join ")) {
             var button = titles[i].parentElement.parentElement.querySelector("button.zm-btn.zm-btn-legacy.zm-btn--primary.zm-btn__outline--blue") || titles[i].parentElement.parentElement.querySelector("button.zmu-btn.zm-btn-legacy.zmu-btn--primary.zmu-btn__outline--blue");
             if (button.innerText == "Join") {
                 if (!breakoutRoomsStarting) {
